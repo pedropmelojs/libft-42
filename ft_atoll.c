@@ -26,12 +26,13 @@
 ** @example ft_atoi("  -42abc") retourne -42
 ** @example ft_atoi("   +123") retourne 123
 */
-long long	ft_atoll(const char *str)
+long long	ft_atoll(const char *str, bool *overflow)
 {
 	long long	i;
 	long long	sign;
 	long long	result;
 
+	*overflow = false;
 	i = 0;
 	sign = 1;
 	result = 0;
@@ -45,6 +46,8 @@ long long	ft_atoll(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		if (result > (LLONG_MAX - (*str - '0')) / 10)
+			return (*overflow = true, result);
 		result = result * 10 + (str[i] - '0');
 		i++;
 	}

@@ -13,11 +13,13 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdbool.h>
 # include <fcntl.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
@@ -65,7 +67,7 @@ int			ft_strncmp(const char *s1, const char *s2, int n);
 int			ft_memcmp(const void *s1, const void *s2, int n);
 int			ft_strfree(char **str);
 
-long long	ft_atoll(const char *nptr);
+long long	ft_atoll(const char *str, bool *overflow);
 
 void		*ft_calloc(int nmemb, int size);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
