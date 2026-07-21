@@ -129,7 +129,7 @@ char	*get_next_line(int fd)
 	int			len;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (NULL);
+		return (free(stash), stash = NULL, NULL);
 	if (stash == NULL)
 	{
 		stash = malloc_stash(stash);
